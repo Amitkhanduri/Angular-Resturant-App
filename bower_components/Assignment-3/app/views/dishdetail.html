@@ -1,0 +1,42 @@
+
+     <div class="container">
+      <div class="row row-content" ng-controller="DishDetailController">
+        <div class="col-xs-12">
+        <button class="btn btn-xs btn-primary pull-right"
+                    type="button" ui-sref="app.menu">
+                    Back to Menu
+          </button>
+          <div class="media" >
+            <div class="media-left media-middle">
+              <a href="#">
+                <img class="media-object img-thumbnail" src={{dish.image}} alt="Uthapizza">
+              </a>
+            </div>
+            <div class="media-body">
+              <h2 class="media-heading">{{dish.name}}
+                <span class="label label-danger">{{dish.label}}</span>
+                <span class="badge">{{dish.price | currency}}</span>
+              </h2>
+              <p>{{dish.description}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-9 col-xs-offset-1" >
+        <div>
+
+          <p><h4><strong>Customer Comments</strong> <small>Sort by : <input type="text" ng-model="sortValue"></small></h4></p>
+
+          </div>
+          <ul class="media-list">
+            <li ng-repeat="comment in dish.comments | orderBy:sortValue">
+             <blockquote>
+              <h4>{{comment.rating}} Stars</h4>
+              <h4>{{comment.comment}}</h4>
+              <footer>
+                {{comment.author}}, {{comment.date | date:mediumDate}}
+              </footer>
+            </blockquote></li>
+          </ul>
+        </div>
+
+      </div>
